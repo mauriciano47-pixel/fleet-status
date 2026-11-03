@@ -1,0 +1,21 @@
+{
+  "name": "sovereign-fleet-status",
+  "version": "1.0.0",
+  "description": "Sovereign Fleet Status Page & Real-Time SLA Monitor — Mauricio Uribe Maldonado",
+  "main": "app.js",
+  "type": "module",
+  "scripts": {
+    "test": "node --test tests/*.test.js",
+    "prepush": "npm test"
+  },
+  "keywords": [
+    "status-page",
+    "sla-tracker",
+    "uptime",
+    "observability",
+    "mauricio-uribe",
+    "tier-1-sovereign"
+  ],
+  "author": "Mauricio Uribe Maldonado",
+  "license": "MIT"
+}

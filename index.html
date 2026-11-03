@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Sovereign Fleet Status & Health SLA Monitor — Mauricio Uribe Maldonado</title>
+  <meta name="description" content="Página oficial de estado y salud de servicios en tiempo real de la cartera soberana de Mauricio Uribe Maldonado: CAMBIOYA!, Ataraxia, HiDoctor, VitroDiag, Faro, SENTINEL y más." />
+  <link rel="canonical" href="https://mauriciano47-pixel.github.io/fleet-status/" />
+  
+  <!-- Estilos & Fuentes -->
+  <link rel="stylesheet" href="style.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet" />
+</head>
+<body>
+
+  <div class="container">
+    <!-- Header Institucional -->
+    <header class="header">
+      <div class="brand-kicker">
+        <span>🛡️</span>
+        <span>V-GUARD SOVEREIGN ECOSYSTEM • SSOT AUDITADO</span>
+      </div>
+      <h1 class="main-title">Sovereign Fleet Status & Health Monitor</h1>
+      <p class="main-subtitle">
+        Monitor de disponibilidad 24/7, SLA histórico de 90 días y telemetría de red en vivo de las aplicaciones de <strong>Mauricio Uribe Maldonado</strong>.
+      </p>
+
+      <!-- Enlaces Cruzados a Vitrina y Due Diligence -->
+      <nav class="nav-cross-strip" aria-label="Navegación del Ecosistema">
+        <a href="https://mauriciano47-pixel.github.io/vitrina/" class="nav-link-btn" target="_blank" rel="noopener">
+          <span>🚀</span> Vitrina & Launchpad
+        </a>
+        <a href="https://mauriciano47-pixel.github.io/due-diligence-suite/" class="nav-link-btn" target="_blank" rel="noopener">
+          <span>💼</span> Due Diligence Hub & Deal Desk
+        </a>
+        <a href="https://github.com/mauriciano47-pixel" class="nav-link-btn" target="_blank" rel="noopener">
+          <span>🐙</span> GitHub Institucional
+        </a>
+      </nav>
+    </header>
+
+    <!-- Gran Banner de Estado General -->
+    <section class="system-status-hero" aria-label="Estado General del Sistema">
+      <div class="status-hero-left">
+        <div class="pulse-dot"></div>
+        <div>
+          <h2 class="status-hero-title">Todos los Sistemas Operacionales</h2>
+          <p class="status-hero-sub" id="last-probe-time">Monitoreo continuo activo • Grado Institucional Tier 1</p>
+        </div>
+      </div>
+      <div class="status-hero-right">
+        <button type="button" class="btn-probe" id="btn-probe-now" aria-label="Probar latencia en vivo">
+          <span>⚡</span> Probar Latencia Ahora
+        </button>
+      </div>
+    </section>
+
+    <!-- Métricas Maestras (KPI Grid) -->
+    <section class="kpi-grid" aria-label="Métricas Clave de Rendimiento">
+      <div class="kpi-card">
+        <div class="kpi-val" id="kpi-global-sla">99.98%</div>
+        <div class="kpi-label">Uptime Global (90 Días)</div>
+      </div>
+      <div class="kpi-card">
+        <div class="kpi-val" id="kpi-services-count">10</div>
+        <div class="kpi-label">Servicios Monitoreados</div>
+      </div>
+      <div class="kpi-card">
+        <div class="kpi-val" id="kpi-active-incidents">0 Activos</div>
+        <div class="kpi-label">Incidentes en Curso</div>
+      </div>
+      <div class="kpi-card">
+        <div class="kpi-val">100%</div>
+        <div class="kpi-label">Resiliencia Offline-First</div>
+      </div>
+    </section>
+
+    <!-- Lista de Servicios de la Flota -->
+    <section aria-labelledby="sec-services">
+      <h2 class="section-title" id="sec-services">
+        <span>🌐</span> Disponibilidad por Servicio (Últimos 90 Días)
+      </h2>
+      <div class="service-list" id="services-container">
+        <!-- Renderizado dinámicamente por app.js -->
+      </div>
+    </section>
+
+    <!-- Historial de Incidentes y Mantenimiento -->
+    <section aria-labelledby="sec-incidents">
+      <h2 class="section-title" id="sec-incidents">
+        <span>📋</span> Historial de Incidentes & MTTR
+      </h2>
+      <div id="incidents-container">
+        <!-- Renderizado dinámicamente por app.js -->
+      </div>
+    </section>
+
+    <!-- Footer Institucional -->
+    <footer class="footer">
+      <p>
+        © 2026 <strong>Mauricio Uribe Maldonado</strong> — Todos los derechos reservados.
+      </p>
+      <p style="margin-top: 6px;">
+        Arquitectura Soberana Offline-First • Grado Institucional AAA • Zero-Leakage Standard.
+      </p>
+    </footer>
+  </div>
+
+  <script type="module" src="app.js"></script>
+</body>
+</html>
