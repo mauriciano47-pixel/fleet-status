@@ -80,3 +80,15 @@ test('10. Auditoría Zero-Leakage: Ningún registro de servicio expone llaves se
   assert.doesNotMatch(jsonStr, /ghp_[0-9a-zA-Z]+/);
   assert.doesNotMatch(jsonStr, /AIza[0-9A-Za-z-_]+/);
 });
+
+test('11. Telemetría RUM & Pipeline CI: Baliza RUM y plantilla de verificación CI deben existir y estar sellados', async () => {
+  const fs = await import('node:fs');
+  assert.equal(fs.existsSync('./js/rumBeacon.js'), true, 'La baliza RUM debe estar presente');
+  const ciExists = fs.existsSync('./ci/verify.yml') || fs.existsSync('./.github/workflows/verify.yml');
+  assert.equal(ciExists, true, 'El workflow de verificación de CI debe existir');
+  
+  const rumCode = fs.readFileSync('./js/rumBeacon.js', 'utf8');
+  assert.match(rumCode, /window\.__VGUARD_RUM__/);
+  assert.match(rumCode, /uncaught_exception/);
+  assert.match(rumCode, /unhandled_rejection/);
+});
