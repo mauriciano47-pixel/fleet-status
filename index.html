@@ -108,6 +108,16 @@
     </footer>
   </div>
 
+  <!-- Toast de Notificación Flotante de Telemetría -->
+  <aside id="fleet-toast" class="fleet-toast" role="status" aria-live="polite" aria-atomic="true" aria-hidden="true">
+    <div class="toast-icon" id="toast-icon" aria-hidden="true">✅</div>
+    <div class="toast-body">
+      <strong id="toast-title">Sondeo de Red Completado</strong>
+      <p id="toast-msg">10/10 aplicaciones verificadas con éxito en tiempo real.</p>
+    </div>
+    <button type="button" class="toast-close" id="toast-close" aria-label="Cerrar notificación">&times;</button>
+  </aside>
+
   <script type="module" src="app.js"></script>
 </body>
 </html>

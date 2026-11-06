@@ -433,4 +433,140 @@ body {
   .main-title { font-size: 1.65rem; }
   .system-status-hero { flex-direction: column; align-items: flex-start; }
   .status-hero-right { width: 100%; justify-content: flex-start; }
+  .fleet-toast {
+    left: 16px;
+    right: 16px;
+    bottom: 16px;
+    max-width: calc(100% - 32px);
+  }
 }
+
+/* ==========================================================================
+   Toast de Notificación Flotante & Feedback de Telemetría en Vivo
+   ========================================================================== */
+.fleet-toast {
+  position: fixed;
+  bottom: 28px;
+  right: 28px;
+  max-width: 440px;
+  background: rgba(10, 15, 29, 0.96);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  border: 1px solid var(--border-accent);
+  box-shadow: 0 16px 36px rgba(0, 0, 0, 0.6), 0 0 25px rgba(16, 185, 129, 0.25);
+  border-radius: var(--radius-md);
+  padding: 14px 18px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  z-index: 9999;
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(24px);
+  transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+  pointer-events: none;
+}
+
+.fleet-toast.show {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+  pointer-events: auto;
+}
+
+.fleet-toast.success {
+  border-color: rgba(16, 185, 129, 0.7);
+  box-shadow: 0 16px 36px rgba(0, 0, 0, 0.6), 0 0 30px rgba(16, 185, 129, 0.3);
+}
+
+.fleet-toast.warning {
+  border-color: rgba(245, 158, 11, 0.7);
+  box-shadow: 0 16px 36px rgba(0, 0, 0, 0.6), 0 0 30px rgba(245, 158, 11, 0.3);
+}
+
+.fleet-toast.error {
+  border-color: rgba(239, 68, 68, 0.7);
+  box-shadow: 0 16px 36px rgba(0, 0, 0, 0.6), 0 0 30px rgba(239, 68, 68, 0.3);
+}
+
+.toast-icon {
+  font-size: 1.5rem;
+  line-height: 1;
+  flex-shrink: 0;
+}
+
+.toast-body {
+  flex: 1;
+}
+
+.toast-body strong {
+  display: block;
+  font-size: 0.94rem;
+  font-weight: 700;
+  color: #FFFFFF;
+  margin-bottom: 2px;
+}
+
+.toast-body p {
+  font-size: 0.82rem;
+  color: var(--text-muted);
+  line-height: 1.4;
+  margin: 0;
+}
+
+.toast-close {
+  background: transparent;
+  border: none;
+  color: var(--text-dim);
+  font-size: 1.35rem;
+  cursor: pointer;
+  padding: 4px;
+  line-height: 1;
+  transition: color 0.2s ease, transform 0.2s ease;
+}
+
+.toast-close:hover {
+  color: #FFFFFF;
+  transform: scale(1.15);
+}
+
+/* Efecto de destello al actualizar la latencia */
+.latency-tag {
+  transition: all 0.3s ease;
+  display: inline-block;
+  padding: 2px 6px;
+  border-radius: var(--radius-sm);
+}
+
+.latency-tag.latency-updated {
+  animation: latencyPulse 1.2s ease-out;
+  color: #34D399 !important;
+  background: rgba(16, 185, 129, 0.18);
+  text-shadow: 0 0 10px rgba(16, 185, 129, 0.6);
+}
+
+@keyframes latencyPulse {
+  0% { transform: scale(1.18); background: rgba(16, 185, 129, 0.35); }
+  50% { transform: scale(1.08); }
+  100% { transform: scale(1); }
+}
+
+/* Estados visuales dinámicos del botón de prueba */
+.btn-probe {
+  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.btn-probe.probing {
+  background: #0D9488 !important;
+  color: #FFFFFF !important;
+  cursor: wait;
+  box-shadow: 0 0 20px rgba(13, 148, 136, 0.6);
+  pointer-events: none;
+}
+
+.btn-probe.success {
+  background: #059669 !important;
+  color: #FFFFFF !important;
+  box-shadow: 0 0 25px rgba(16, 185, 129, 0.7);
+}
+
