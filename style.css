@@ -238,6 +238,71 @@ body {
   margin-top: 4px;
 }
 
+/* HUD de Telemetría RUM en Vivo ($0 OPEX) */
+.rum-telemetry-strip {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
+  gap: 14px;
+  margin-bottom: 32px;
+}
+
+.rum-card {
+  background: rgba(10, 16, 26, 0.7);
+  border: 1px solid rgba(56, 189, 248, 0.2);
+  border-radius: var(--radius-md);
+  padding: 16px 18px;
+  position: relative;
+  transition: all 0.2s ease;
+  backdrop-filter: blur(8px);
+}
+
+.rum-card:hover {
+  border-color: var(--cyan);
+  background: rgba(14, 23, 38, 0.85);
+  transform: translateY(-1px);
+}
+
+.rum-header {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 6px;
+}
+
+.rum-icon {
+  font-size: 1.05rem;
+}
+
+.rum-title {
+  font-size: 0.78rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  color: var(--cyan);
+}
+
+.rum-value {
+  font-size: 1.55rem;
+  font-weight: 800;
+  font-family: var(--font-mono);
+  color: #FFFFFF;
+  margin-bottom: 4px;
+}
+
+.rum-value.text-emerald {
+  color: var(--emerald);
+}
+
+.rum-value.text-rose {
+  color: #F43F5E;
+}
+
+.rum-desc {
+  font-size: 0.76rem;
+  color: var(--text-muted);
+  line-height: 1.35;
+}
+
 /* Sección de Servicios */
 .section-title {
   font-size: 1.35rem;

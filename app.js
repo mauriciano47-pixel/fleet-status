@@ -2,9 +2,15 @@ import { FLEET_SERVICES, INCIDENT_LOG, calculateGlobalSLA } from './js/servicesD
 
 document.addEventListener('DOMContentLoaded', () => {
   renderKPICards();
+  renderRUMMetrics();
   renderServices();
   renderIncidents();
   setupEventListeners();
+
+  // Escuchar evento load para actualizar métricas Navigation Timing exactas
+  window.addEventListener('load', () => {
+    setTimeout(renderRUMMetrics, 150);
+  });
 });
 
 function renderKPICards() {
@@ -17,6 +23,47 @@ function renderKPICards() {
 
   const incidentsEl = document.getElementById('kpi-active-incidents');
   if (incidentsEl) incidentsEl.textContent = '0 Activos';
+}
+
+function renderRUMMetrics() {
+  const ttfbEl = document.getElementById('rum-ttfb');
+  const domEl = document.getElementById('rum-dom');
+  const loadEl = document.getElementById('rum-load');
+  const healthEl = document.getElementById('rum-health');
+  const errorsEl = document.getElementById('rum-errors-count');
+
+  let ttfb = 28;
+  let dom = 85;
+  let pageLoad = 145;
+  let errCount = 0;
+
+  if (typeof window !== 'undefined' && window.__VGUARD_RUM__) {
+    const session = window.__VGUARD_RUM__.getCurrentSession();
+    if (session) {
+      if (session.timings && session.timings.ttfbMs) ttfb = session.timings.ttfbMs;
+      if (session.timings && session.timings.domReadyMs) dom = session.timings.domReadyMs;
+      if (session.timings && session.timings.pageLoadMs) pageLoad = session.timings.pageLoadMs;
+      if (session.errors) errCount = session.errors.length;
+    }
+  } else if (typeof performance !== 'undefined' && performance.getEntriesByType) {
+    const nav = performance.getEntriesByType('navigation')[0];
+    if (nav) {
+      ttfb = Math.max(1, Math.round(nav.responseStart - nav.requestStart));
+      dom = Math.max(1, Math.round(nav.domContentLoadedEventEnd - nav.startTime));
+      pageLoad = Math.max(1, Math.round((nav.loadEventEnd || performance.now()) - nav.startTime));
+    }
+  }
+
+  if (ttfbEl) ttfbEl.textContent = `${ttfb} ms`;
+  if (domEl) domEl.textContent = `${dom} ms`;
+  if (loadEl) loadEl.textContent = `${pageLoad} ms`;
+  if (healthEl) {
+    healthEl.textContent = errCount === 0 ? '100% Sano' : `${errCount} Errores`;
+    healthEl.className = errCount === 0 ? 'rum-value text-emerald' : 'rum-value text-rose';
+  }
+  if (errorsEl) {
+    errorsEl.textContent = errCount === 0 ? '0 Errores JS no manejados' : `${errCount} excepciones capturadas`;
+  }
 }
 
 function renderServices() {

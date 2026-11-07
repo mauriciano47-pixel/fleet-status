@@ -77,6 +77,42 @@
       </div>
     </section>
 
+    <!-- HUD de Telemetría RUM en Vivo ($0 OPEX) -->
+    <section class="rum-telemetry-strip" aria-label="Telemetría de Navegación RUM en Vivo">
+      <div class="rum-card">
+        <div class="rum-header">
+          <span class="rum-icon">⚡</span>
+          <span class="rum-title">TTFB (Edge CDN)</span>
+        </div>
+        <div class="rum-value" id="rum-ttfb">-- ms</div>
+        <div class="rum-desc">Respuesta del primer byte desde el borde Cloudflare/GitHub</div>
+      </div>
+      <div class="rum-card">
+        <div class="rum-header">
+          <span class="rum-icon">🏗️</span>
+          <span class="rum-title">DOM Ready</span>
+        </div>
+        <div class="rum-value" id="rum-dom">-- ms</div>
+        <div class="rum-desc">Estructura HTML analizada e interactiva</div>
+      </div>
+      <div class="rum-card">
+        <div class="rum-header">
+          <span class="rum-icon">🚀</span>
+          <span class="rum-title">Carga Completa</span>
+        </div>
+        <div class="rum-value" id="rum-load">-- ms</div>
+        <div class="rum-desc">Renderizado de recursos y bundle sellado</div>
+      </div>
+      <div class="rum-card">
+        <div class="rum-header">
+          <span class="rum-icon">🛡️</span>
+          <span class="rum-title">Salud de Cliente</span>
+        </div>
+        <div class="rum-value text-emerald" id="rum-health">100% Sano</div>
+        <div class="rum-desc" id="rum-errors-count">0 Errores JS no manejados</div>
+      </div>
+    </section>
+
     <!-- Lista de Servicios de la Flota -->
     <section aria-labelledby="sec-services">
       <h2 class="section-title" id="sec-services">

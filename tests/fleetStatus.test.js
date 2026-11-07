@@ -92,3 +92,13 @@ test('11. Telemetría RUM & Pipeline CI: Baliza RUM y plantilla de verificación
   assert.match(rumCode, /uncaught_exception/);
   assert.match(rumCode, /unhandled_rejection/);
 });
+
+test('12. HUD de Telemetría RUM en Vivo: Debe contener los 4 indicadores clave en el DOM', async () => {
+  const fs = await import('node:fs');
+  const html = fs.readFileSync('./index.html', 'utf8');
+  assert.match(html, /id="rum-ttfb"/, 'Debe incluir indicador TTFB');
+  assert.match(html, /id="rum-dom"/, 'Debe incluir indicador DOM Ready');
+  assert.match(html, /id="rum-load"/, 'Debe incluir indicador Page Load');
+  assert.match(html, /id="rum-health"/, 'Debe incluir indicador de salud');
+  assert.match(html, /rumBeacon\.js/, 'Debe enlazar la baliza RUM');
+});
